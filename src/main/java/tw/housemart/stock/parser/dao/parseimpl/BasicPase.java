@@ -7,6 +7,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.csv.CSVFormat;
@@ -20,12 +21,14 @@ public abstract class BasicPase {
 
 	private int batchSize=20;
 	private int columnLine=0;
+	Date date=new Date();
 	List<CSVRecord> bufferList=new ArrayList<>();
 	
-	public BasicPase(int headerLine,int btSize) {
+	
+	/*BasicPase(int headerLine,int btSize) {
 		columnLine=headerLine;
 		batchSize=btSize;
-	}
+	}*/
 	
 	public void parse(Path p,Charset charset) throws IOException {
 		@Cleanup
@@ -55,4 +58,16 @@ public abstract class BasicPase {
 	}
 	
 	abstract void callProcess(List<CSVRecord> list);
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public void setBatchSize(int batchSize) {
+		this.batchSize = batchSize;
+	}
+
+	public void setColumnLine(int columnLine) {
+		this.columnLine = columnLine;
+	}
 }

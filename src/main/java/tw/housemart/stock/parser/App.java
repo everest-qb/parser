@@ -12,6 +12,5 @@ public class App
     {
     	ConfigurableApplicationContext context=SpringApplication.run(App.class, args);
     	
-    	
     }
 }
